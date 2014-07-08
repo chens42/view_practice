@@ -1,4 +1,4 @@
-package shaojin.clockviewpractice;
+package shaojin.clockviewpractice.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

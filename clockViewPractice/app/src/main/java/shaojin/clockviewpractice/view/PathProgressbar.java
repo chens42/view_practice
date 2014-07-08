@@ -1,4 +1,4 @@
-package shaojin.clockviewpractice;
+package shaojin.clockviewpractice.view;
 
 
 import android.content.Context;
@@ -20,6 +20,9 @@ public class PathProgressbar extends View {
     private int radius;
     private int angle = 0;
     private RectF oval = new RectF();
+    private int cx1;
+    private int cx2;
+    private boolean isRightCircle = true;
 
     public PathProgressbar(Context context) {
         super(context);
@@ -40,9 +43,6 @@ public class PathProgressbar extends View {
         colorIndicator = true;
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.STROKE);
-
-//        path.addCircle(cx,cy,radius, Path.Direction.CW);
-//                path.addArc(oval,0,145);
     }
 
 
@@ -58,7 +58,19 @@ public class PathProgressbar extends View {
         } else {
             paint.setColor(Color.WHITE);
         }
-        oval.set(cx - radius + radius / 10, cy - radius + radius / 10, cx + radius - radius / 10, cy + radius - radius / 10);
+        cx1 = getWidth() / 4;
+        cx2 = 3 * cx1;
+        radius = Math.min(cx1, cy);
+        oval.set(cx1 - radius + radius / 10, cy - radius + radius / 10, cx1 + radius, cy + radius - radius / 10);
+        canvas.drawArc(oval, 0, 360, false, paint);
+        if(!isRightCircle){
+            if (!colorIndicator) {
+                paint.setColor(Color.GRAY);
+            } else {
+                paint.setColor(Color.WHITE);
+            }
+        }
+        oval.set(cx2 - radius, cy - radius + radius / 10, cx2 + radius - radius / 10, cy + radius - radius / 10);
         canvas.drawArc(oval, 0, 360, false, paint);
 
         if (!colorIndicator) {
@@ -68,18 +80,25 @@ public class PathProgressbar extends View {
         }
         canvas.drawPath(path, paint);
         update();
-
     }
 
     private void update() {
         path.reset();
         angle = angle + 5;
-        if (angle == 720) {
-            angle = 0;
-            colorIndicator = !colorIndicator;
+        if (isRightCircle) {
+            oval.set(cx2 - radius, cy - radius + radius / 10, cx2 + radius - radius / 10, cy + radius - radius / 10);
+            path.arcTo(oval, 180, angle);
+        } else {
+            oval.set(cx1 - radius + radius / 10, cy - radius + radius / 10, cx1 + radius, cy + radius - radius / 10);
+            path.arcTo(oval, 0, 0 - angle);
         }
-        oval.set(cx - radius + radius / 10, cy - radius + radius / 10, cx + radius - radius / 10, cy + radius - radius / 10);
-        path.arcTo(oval, 0, angle);
+        if (angle == 360) {
+            angle = 0;
+            if (!isRightCircle) {
+                colorIndicator = !colorIndicator;
+            }
+            isRightCircle = !isRightCircle;
+        }
         postInvalidateDelayed(10);
     }
 }

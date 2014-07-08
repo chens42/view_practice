@@ -1,4 +1,4 @@
-package shaojin.clockviewpractice;
+package shaojin.clockviewpractice.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,6 +8,10 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.Calendar;
+
+import shaojin.clockviewpractice.R;
+
 public class ClockView extends View {
     private double hour = 0;
     private double minute = 0;
@@ -15,7 +19,6 @@ public class ClockView extends View {
     private int cx;
     private int cy;
     private int radius;
-    private Canvas canvas;
 
     public ClockView(Context context) {
         super(context);
@@ -34,11 +37,12 @@ public class ClockView extends View {
     private void initViews(Context context, AttributeSet attrs) {
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
                 R.styleable.LovelyView, 0, 0);
+        Calendar c = Calendar.getInstance();
 
         try {
-            hour = a.getInteger(R.styleable.LovelyView_hour, 0);
-            minute = a.getInteger(R.styleable.LovelyView_minute, 0);
-            second = a.getInteger(R.styleable.LovelyView_second, 0);
+            hour = c.get(Calendar.HOUR);
+            minute = c.get(Calendar.MINUTE);
+            second = c.get(Calendar.SECOND);
 
         } finally {
             a.recycle();
@@ -77,7 +81,6 @@ public class ClockView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        this.canvas = canvas;
         Paint paint = new Paint();                          //define paint and paint color
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
