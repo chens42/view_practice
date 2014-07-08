@@ -14,7 +14,7 @@ public class ProgressSpinner extends View {
     private int cy;
     private int radius;
     private float innerStart = 0;
-    private float outerStart =180;
+    private float outerStart = -180;
     private RectF oval = new RectF();
 
 
@@ -38,29 +38,16 @@ public class ProgressSpinner extends View {
         radius = Math.min(cx, cy);
         paint.setAntiAlias(true);
         paint.setColor(Color.BLUE);
-        canvas.drawCircle(cx, cy, radius, paint);
-
-
-
-        paint.setColor(Color.WHITE);
-        oval.set(cx-radius-2,cy-radius-2,cx+radius+2,cy+radius+2);
-        canvas.drawArc(oval,innerStart,45,true,paint);
-        radius = radius * 3 / 4;
-        canvas.drawCircle(cx, cy, radius, paint);
-
-        paint.setColor(Color.BLUE);
-        radius = radius * 3 / 4;
-        canvas.drawCircle(cx, cy, radius, paint);
-
-
-        paint.setColor(Color.WHITE);
-        oval.set(cx-radius-2,cy-radius-2,cx+radius+2,cy+radius+2);
-        canvas.drawArc(oval,outerStart,60,true,paint);
-        radius = radius / 3;
-        canvas.drawCircle(cx, cy, radius, paint);
-
-        innerStart=innerStart+10;
-        outerStart=outerStart-10;
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(radius / 10);
+        oval.set(cx - radius + radius / 10, cy - radius + radius / 10, cx + radius - radius / 10, cy + radius - radius / 10);
+        canvas.drawArc(oval, outerStart, 315, false, paint);
+        radius = radius / 2;
+        paint.setStrokeWidth(20);
+        oval.set(cx - radius + 5, cy - radius + 5, cx + radius - 5, cy + radius - 5);
+        canvas.drawArc(oval, innerStart, 315, false, paint);
+        innerStart = innerStart + 20;
+        outerStart = outerStart - 5;
         postInvalidateDelayed(25);
     }
 }
