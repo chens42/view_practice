@@ -35,8 +35,8 @@ public class ClockView extends View {
     }
 
     private void initViews(Context context, AttributeSet attrs) {
-        TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
-                R.styleable.LovelyView, 0, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs,
+                R.styleable.ClockViewStyleable, 0, 0);
         Calendar c = Calendar.getInstance();
 
         try {

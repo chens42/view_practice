@@ -12,7 +12,6 @@
     android:orientation="vertical">
 
 
-
     <shaojin.clockviewpractice.view.ProgressSpinner
         android:layout_width="60dp"
         android:layout_height="60dp" />
@@ -20,6 +19,9 @@
     <shaojin.clockviewpractice.view.PathProgressbar
         android:layout_width="50dp"
         android:layout_height="25dp"
+        custom:angleSpeed="8"
+        custom:contentColorOne="#ffffff"
+        custom:contentColorTwo="#ff0764ff"
         />
 
     <shaojin.clockviewpractice.view.ClockView
@@ -28,4 +30,8 @@
         custom:hour="10"
         custom:minute="59"
         custom:second="50" />
+<!--    <shaojin.clockviewpractice.view.CustomImageViewWithImageCounter
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_launcher"/>-->
 </LinearLayout>

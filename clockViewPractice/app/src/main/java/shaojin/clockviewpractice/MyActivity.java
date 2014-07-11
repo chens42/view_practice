@@ -12,8 +12,10 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-        getActionBar().hide();
-
+/*        getActionBar().hide();
+        WebView webViewOne = (WebView) findViewById(R.id.firstWebView);
+        webViewOne.getSettings().setJavaScriptEnabled(true);
+        webViewOne.loadUrl("http://mysite.science.uottawa.ca/rsmith43/Zombies.pdf");*/
     }
 
 
