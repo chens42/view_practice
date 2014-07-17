@@ -81,7 +81,7 @@ public class ClockView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Paint paint = new Paint();                          //define paint and paint color
+        Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
 

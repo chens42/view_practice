@@ -22,7 +22,7 @@
         custom:angleSpeed="8"
         custom:contentColorOne="#ffffff"
         custom:contentColorTwo="#ff0764ff"
-        />
+        android:layout_marginTop="10dp" />
 
     <shaojin.clockviewpractice.view.ClockView
         android:layout_width="200dp"
@@ -30,8 +30,8 @@
         custom:hour="10"
         custom:minute="59"
         custom:second="50" />
-<!--    <shaojin.clockviewpractice.view.CustomImageViewWithImageCounter
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_launcher"/>-->
+    <!--    <shaojin.clockviewpractice.view.CustomImageViewWithImageCounter
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_launcher"/>-->
 </LinearLayout>

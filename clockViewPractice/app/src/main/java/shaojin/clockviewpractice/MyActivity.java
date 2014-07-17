@@ -7,17 +7,11 @@ import android.view.MenuItem;
 
 
 public class MyActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-/*        getActionBar().hide();
-        WebView webViewOne = (WebView) findViewById(R.id.firstWebView);
-        webViewOne.getSettings().setJavaScriptEnabled(true);
-        webViewOne.loadUrl("http://mysite.science.uottawa.ca/rsmith43/Zombies.pdf");*/
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
